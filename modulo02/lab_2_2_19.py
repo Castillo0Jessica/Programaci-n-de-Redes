@@ -1,0 +1,32 @@
+'''
+Descripción: Hacer una flecha doble y duplicarla de lado a lado
+Autor: Jessica Castillo
+Fecha: 20 de Septiembre 2022
+'''
+print("      *")
+print("     * *")
+print("    *   *")
+print("   *     *")
+print("  ***   ***")
+print("    *   *")
+print("    *   *")
+print("    *****")
+print("")
+print("Flecha doble")
+print("            *")
+print("           * *")
+print("          *   *")
+print("         *     *")
+print("        *       *")
+print("       *         *")
+print("      *           *")
+print("     *             *")
+print("    *               *")
+print("   ******       ******")
+print("        *       *")
+print("        *       *")
+print("        *       *")
+print("        *       *")
+print("        *       *")
+print("        *       *")
+print("        *********")
