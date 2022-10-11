@@ -6,5 +6,6 @@ Fecha: 06 de octubre 2022
 '''
 n= int (input("Ingresa un número: "))
 
-for n in range (n,1):
+for i in range (n):
     print(n)
+    n=n-1
