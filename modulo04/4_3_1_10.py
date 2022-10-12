@@ -1,9 +1,12 @@
 '''
 Descripción: Convirtiendo combustibles....
+Escribir un par de funciones que conviertan l/100km a mpg (milas por galón), y viceversa.
 Autor: Jessica Castillo
 Fecha: 04 de octubre 2022
 '''
 
+#recolección de los datos para posteriormente dividir 
+#y mandar llamar a las funciones segun cada cantidad.
 def liters_100km_to_miles_gallon(liters):
      galones = liters / 3.785411784
      miles = 100 * 1000 / 1609.344

@@ -26,9 +26,14 @@ if (money > 0):
         print("El impuesto es de $",interes)
     elif money >60000:
         interes= money*0.45
-        print("El impuesto es de $",interes)
+        print("El impuesto es de $",interes)      
 else:
     print("Cantidad inválida")
+
+
+    
+
+
 
 
 

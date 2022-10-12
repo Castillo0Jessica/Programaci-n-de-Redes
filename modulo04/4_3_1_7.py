@@ -1,8 +1,11 @@
 '''
-Descripción: ¿Cuántos días?
+Descripción: ¿Cuántos días? 
+Una función que toma dos argumentos (un año y un mes) y devuelve 
+el número de días del mes/año dado.
 Autor: Jessica Castillo
 Fecha: 04 de octubre 2022
 '''
+'''La función define si son o no años bisiestos'''
 def is_year_leap(year):
     if year % 4 != 0:
         return False
@@ -13,6 +16,8 @@ def is_year_leap(year):
     else:
         return True
 
+'''toma dos argumentos (un año y un mes) con el if definimos si el mes tiene 
+29 días que sería bisiesto, si no es normal'''
 def days_in_month(year, month):
     diasMes = [31,28,31,30,31,30,31,31,30,31,30,31]
 
