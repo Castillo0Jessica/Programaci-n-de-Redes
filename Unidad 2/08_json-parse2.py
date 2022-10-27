@@ -1,5 +1,5 @@
 #Autor: Jessica Quetzali Castillo Aviles
-#DEscripción: Print the URL and Check the Status of the JSON Request
+#DEscripción: Imprima la URL y verifique el estado de la solicitud JSON
 #25 octubre 2022
 '''Importar módulos existentes para agregar funcionalidad adicional.'''
 import urllib.parse
