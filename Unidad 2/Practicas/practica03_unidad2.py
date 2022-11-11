@@ -13,35 +13,31 @@ import urllib.parse
 import requests
 
 
-main_api = "https://api.fda.gov/drug/event.json?api_key=SBakUBm2jEFCtAwaLeQAzc8F398KYEdEWn9hcVo1&search=communication"
-key ="SBakUBm2jEFCtAwaLeQAzc8F398KYEdEWn9hcVo1"
+
+main_api = "https://api.fda.gov/drug/event.json?"
+api_key ="SBakUBm2jEFCtAwaLeQAzc8F398KYEdEWn9hcVo1"
+search ="CANADA"
+
+
 
 
 while True:
-     #ciclo para que en cuanto el usuario agregue un "salir" o "s" se termine el ciclo
-    orig = input("Starting Location: ")
-    if orig == "salir" or orig == "s":
-        break
-    dest = input("Destination: ")
-    if dest == "salir" or dest == "s":
-        break
+   #ciclo para que en cuanto el usuario agregue un "salir" o "s" se termine el ciclo
+   search= input("LUGAR: ")
+   if search== "salir" or search == "s":
+      break
 
-    url = main_api + urllib.parse.urlencode({"key":key, "from":orig, "to":dest})
-    print("URL: " + (url))
+   url = main_api + urllib.parse.urlencode({"api_key":api_key, "search":search})
+   print("URL: " + (url))
     
-    json_data = requests.get(url).json()
-    json_status = json_data["info"]["statuscode"]
+   json_data = requests.get(url).json()
+   json_status = json_data["results"][0]["primarysource"]["reportercountry"]
+   #print(json_status)
+    
 
-    #declaraciones de impresión que muestran las ubicaciones de origen y destino, etc.
-    if json_status == 0:
-       print("API Status: " + str(json_status) + " = A successful route call.\n")
-       print("Directions from " + (orig) + " to " + (dest))
-       print("Trip Duration:   " + str(json_data["route"]["formattedTime"]))
-       print("=============================================")
-
-    #Las entradas de usuario no válidas son solo un tipo de error.
-    else:
-       print("************************************************************************")
-       print("For Staus Code: " + str(json_status) + ", Refer to:")
-       print("https://developer.mapquest.com/documentation/directions-api/status-codes")
-       print("************************************************************************\n")
+   for elem in json_data["results"]:
+        if search in elem["primarysource"]["reportercountry"]:
+            print("API Status: " + str(json_status) + " = A successful route call.\n")
+            print("Receiptdate: "  + str(elem["receiptdate"]) )
+            print("Companynumb: "+ (elem["companynumb"]))
+            print("receiver:   " + str(elem["receiver"]))

@@ -1,12 +1,12 @@
 """
-Descripción de la API: Es acerca de la nutrición de los establecimientos
+Descripción de la API: Es acerca de la variedad de alimentos y el id que tienen en el establecimiento
 Autor: Castillo Aviles Jessica
 Fecha de creación: 08 de noviembre 2022
 """
 #DESCRIPCIÓN DE LA API
 """***********************************
 Nombre de la API: Nutritionix Appi
-Descripción de la API: Acerca de la nutrición de los establecimientos
+Descripción de la API: Acerca de los alimentos de los establecimientos
 API Portal / Home Page: https://developer.nutritionix.com/?ref=apilist.fun
 ***********************************"""
 '''Importar módulos existentes para agregar funcionalidad adicional.'''
@@ -14,36 +14,36 @@ import urllib.parse
 import requests
 
 
-main_api = "https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=a1a2c541&appKey=2da8c2b4acd6402730b3ebb16eb0bba3"
+main_api = "https://api.nutritionix.com/v1_1/search/mcdonalds?"
 appId = "a1a2c541"
 appKey ="2da8c2b4acd6402730b3ebb16eb0bba3"
+q="Starbucks Frappuccino"
 
 
 while True:
-     #ciclo para que en cuanto el usuario agregue un "salir" o "s" se termine el ciclo
-    orig = input("Starting Location: ")
-    if orig == "salir" or orig == "s":
+    #ciclo para que en cuanto el usuario agregue un "salir" o "s" se termine el ciclo
+    ali= input("Alimento: ")
+    if ali == "salir" or ali == "s":
         break
-    dest = input("Destination: ")
-    if dest == "salir" or dest == "s":
-        break
+  
 
-    url = main_api + urllib.parse.urlencode({"id": appId, "key":appKey, "from":orig, "to":dest})
+    url = main_api + urllib.parse.urlencode({"q":q,"search": ali,"appId": appId, "appKey":appKey})
     print("URL: " + (url))
-    
+
     json_data = requests.get(url).json()
-    json_status = json_data["info"]["statuscode"]
+    json_status = json_data['hits'][0]["fields"]["item_name"]
+    
 
-    #declaraciones de impresión que muestran las ubicaciones de origen y destino, etc.
-    if json_status == 0:
-       print("API Status: " + str(json_status) + " = A successful route call.\n")
-       print("Directions from " + (orig) + " to " + (dest))
-       print("Trip Duration:   " + str(json_data["route"]["formattedTime"]))
-       print("=============================================")
+    for elem in json_data["hits"]:
+        if ali in elem["fields"]["item_name"]:
+            print("Alimento: " + str(elem["fields"]["item_name"]) )
+            print("ID:   " + str(elem["_id"]))
+            print("Brand name:   " + str(elem["fields"]["brand_name"]))
+    
 
-    #Las entradas de usuario no válidas son solo un tipo de error.
-    else:
-       print("************************************************************************")
-       print("For Staus Code: " + str(json_status) + ", Refer to:")
-       print("https://developer.mapquest.com/documentation/directions-api/status-codes")
-       print("************************************************************************\n")
+
+    
+
+
+    
+    

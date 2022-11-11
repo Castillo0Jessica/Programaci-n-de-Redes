@@ -6,7 +6,7 @@ import urllib.parse
 import requests
 
 #Crear variables para la API REQUEST
-main_api = "http://www.mapquestapi.com/directions/v2/route?key=je9lRmco1yvS0pmm3gDpt3Rcs77LdgBY&from=Clarendon%20Blvd,Arlington,VA&to=2400+S+Glebe+Rd,+Arlington,+VA"
+main_api = "http://www.mapquestapi.com/directions/v2/route?"
 key  = "je9lRmco1yvS0pmm3gDpt3Rcs77LdgBY"
 
 # The "while true" construct creates an endless loop.
